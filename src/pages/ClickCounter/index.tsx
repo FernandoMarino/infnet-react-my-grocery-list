@@ -2,7 +2,7 @@ import { useState } from "react";
 import { ThemedButton, ThemedButtonGroup, ThemedP } from "../../styles/layout/layout";
 
 
-function Home() {
+function ClickCounter() {
 
     
     const [count, setCount] = useState(0);
@@ -22,4 +22,4 @@ function Home() {
      );
 }
 
-export default Home;
+export default ClickCounter;

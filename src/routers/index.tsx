@@ -1,6 +1,6 @@
 import { BrowserRouter, Route, Routes } from "react-router";
 
-import Home from "../pages/Home";
+import ClickCounter from "../pages/ClickCounter";
 import Layout from "../components/Layout";
 
 export function Routers() {
@@ -9,7 +9,7 @@ export function Routers() {
         <Routes>
             <Route element={<Layout />}>
 
-                <Route path="/" element={<Home />} />            
+                <Route path="/" element={<ClickCounter />} />            
             </Route>
         </Routes>
     </BrowserRouter>)
