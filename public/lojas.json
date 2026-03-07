@@ -1,0 +1,100 @@
+[
+  {
+    "id": 1,
+    "nome": "Save-On-Foods",
+    "localizacao": "20151 Fraser Hwy, Langley, BC V3A 4E4",
+    "tipo": "tradicional",
+    "google": "https://www.google.com/maps/search/?api=1&query=Save-On-Foods+20151+Fraser+Hwy+Langley+BC"
+  },
+  {
+    "id": 2,
+    "nome": "Safeway",
+    "localizacao": "20871 Fraser Hwy, Langley, BC V3A 4G7",
+    "tipo": "tradicional",
+    "google": "https://www.google.com/maps/search/?api=1&query=Safeway+20871+Fraser+Hwy+Langley+BC"
+  },
+  {
+    "id": 3,
+    "nome": "Real Canadian Superstore",
+    "localizacao": "19851 Willowbrook Dr, Langley, BC V2Y 1A7",
+    "tipo": "tradicional",
+    "google": "https://www.google.com/maps/search/?api=1&query=Real+Canadian+Superstore+19851+Willowbrook+Dr+Langley+BC"
+  },
+  {
+    "id": 4,
+    "nome": "Costco Wholesale",
+    "localizacao": "20499 64 Ave, Langley, BC V2Y 1N5",
+    "tipo": "atacado",
+    "google": "https://www.google.com/maps/search/?api=1&query=Costco+Wholesale+20499+64+Ave+Langley+BC"
+  },
+  {
+    "id": 5,
+    "nome": "Walmart Supercentre",
+    "localizacao": "20202 66 Ave, Langley, BC V2Y 1P3",
+    "tipo": "tradicional",
+    "google": "https://www.google.com/maps/search/?api=1&query=Walmart+Supercentre+20202+66+Ave+Langley+BC"
+  },
+  {
+    "id": 6,
+    "nome": "H Mart",
+    "localizacao": "5501 204 St, Langley, BC V3A 5N8",
+    "tipo": "asiático",
+    "google": "https://www.google.com/maps/search/?api=1&query=H+Mart+5501+204+St+Langley+BC"
+  },
+  {
+    "id": 7,
+    "nome": "T&T Supermarket",
+    "localizacao": "19705 Fraser Hwy Unit 1, Langley, BC V3A 7E9",
+    "tipo": "asiático",
+    "google": "https://www.google.com/maps/search/?api=1&query=T%26T+Supermarket+19705+Fraser+Hwy+Langley+BC"
+  },
+  {
+    "id": 8,
+    "nome": "No Frills",
+    "localizacao": "5501 204 St Unit 10, Langley, BC V3A 5N8",
+    "tipo": "tradicional",
+    "google": "https://www.google.com/maps/search/?api=1&query=No+Frills+5501+204+St+Langley+BC"
+  },
+  {
+    "id": 9,
+    "nome": "FreshCo",
+    "localizacao": "27566 Fraser Hwy, Aldergrove, BC V4W 3P9",
+    "tipo": "tradicional",
+    "google": "https://www.google.com/maps/search/?api=1&query=FreshCo+27566+Fraser+Hwy+Aldergrove+BC"
+  },
+  {
+    "id": 10,
+    "nome": "IGA",
+    "localizacao": "26310 Fraser Hwy, Aldergrove, BC V4W 2Z7",
+    "tipo": "tradicional",
+    "google": "https://www.google.com/maps/search/?api=1&query=IGA+26310+Fraser+Hwy+Aldergrove+BC"
+  },
+  {
+    "id": 11,
+    "nome": "BC Liquor Store – Langley Centre",
+    "localizacao": "5525 204 St, Langley, BC V3A 5N8",
+    "tipo": "liquor",
+    "google": "https://www.google.com/maps/search/?api=1&query=BC+Liquor+Store+5525+204+St+Langley+BC"
+  },
+  {
+    "id": 12,
+    "nome": "Willowbrook Liquor Store",
+    "localizacao": "19705 Fraser Hwy Unit 102, Langley, BC V3A 7E9",
+    "tipo": "liquor",
+    "google": "https://www.google.com/maps/search/?api=1&query=Willowbrook+Liquor+Store+19705+Fraser+Hwy+Langley+BC"
+  },
+  {
+    "id": 13,
+    "nome": "Langley Liquor Store",
+    "localizacao": "20821 Fraser Hwy, Langley, BC V3A 4G7",
+    "tipo": "liquor",
+    "google": "https://www.google.com/maps/search/?api=1&query=Langley+Liquor+Store+20821+Fraser+Hwy+Langley+BC"
+  },
+  {
+    "id": 14,
+    "nome": "Cheers Liquor Store",
+    "localizacao": "19664 64 Ave Unit 101, Langley, BC V2Y 3J6",
+    "tipo": "liquor",
+    "google": "https://www.google.com/maps/search/?api=1&query=Cheers+Liquor+Store+19664+64+Ave+Langley+BC"
+  }
+]

@@ -1,9 +1,9 @@
-import { FooterContainer, ThemedP } from "../../styles/layout/layout";
+import { FooterContainer, FooterP } from "../../styles/layout/layout";
 
 function Footer() {
     return ( 
         <FooterContainer>
-            <ThemedP>@ 2026 Grocery App</ThemedP>
+            <FooterP>@ 2026 Grocery App</FooterP>
         </FooterContainer>
      );
 }

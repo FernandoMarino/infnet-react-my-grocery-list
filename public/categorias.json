@@ -1,0 +1,17 @@
+[
+  { "id": 1, "nomeCategoriaEN": "Fruits and Vegetables", "nomeCategoriaPTBR": "Frutas e Vegetais" },
+  { "id": 2, "nomeCategoriaEN": "Meat and Poultry", "nomeCategoriaPTBR": "Carnes e Aves" },
+  { "id": 3, "nomeCategoriaEN": "Seafood", "nomeCategoriaPTBR": "Peixes e Frutos do Mar" },
+  { "id": 4, "nomeCategoriaEN": "Dairy", "nomeCategoriaPTBR": "Laticínios" },
+  { "id": 5, "nomeCategoriaEN": "Bakery", "nomeCategoriaPTBR": "Padaria" },
+  { "id": 6, "nomeCategoriaEN": "Frozen Foods", "nomeCategoriaPTBR": "Congelados" },
+  { "id": 7, "nomeCategoriaEN": "Beverages", "nomeCategoriaPTBR": "Bebidas" },
+  { "id": 8, "nomeCategoriaEN": "Grocery", "nomeCategoriaPTBR": "Mercearia" },
+  { "id": 9, "nomeCategoriaEN": "Cleaning Supplies", "nomeCategoriaPTBR": "Produtos de Limpeza" },
+  { "id": 10, "nomeCategoriaEN": "Personal Care", "nomeCategoriaPTBR": "Higiene Pessoal" },
+  { "id": 11, "nomeCategoriaEN": "Baby Products", "nomeCategoriaPTBR": "Bebês" },
+  { "id": 12, "nomeCategoriaEN": "Pet Supplies", "nomeCategoriaPTBR": "Pets" },
+  { "id": 13, "nomeCategoriaEN": "Health and Wellness", "nomeCategoriaPTBR": "Saúde e Bem-estar" },
+  { "id": 14, "nomeCategoriaEN": "Snacks and Sweets", "nomeCategoriaPTBR": "Snacks e Guloseimas" },
+  { "id": 15, "nomeCategoriaEN": "Organic Products", "nomeCategoriaPTBR": "Orgânicos" }
+]
