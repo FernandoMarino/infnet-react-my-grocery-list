@@ -1,7 +1,7 @@
 import { useState, type ReactNode } from "react";
 import { ThemeProvider as StyledProvider } from "styled-components";
 import { ThemeContext } from "../context/ThemeContext";
-import { darkTheme, lightTheme } from "../styles/theme";
+import { darkTheme, lightTheme } from "../styles/theme/theme";
 
 export const ThemeProvider: React.FC<{children: ReactNode}> = ({children}) => {
     const [isDark, setIsDark] = useState(false);
