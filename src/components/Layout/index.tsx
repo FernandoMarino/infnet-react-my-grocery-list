@@ -1,17 +1,24 @@
-import { useState, type ReactNode } from "react";
-import { ThemeProvider as StyledProvider } from "styled-components";
-import { darkTheme, lightTheme } from "../../styles/theme/theme";
-import { ThemeContext } from "../../context/ThemeContext";
+import { Outlet } from "react-router";
+import Header from "./Header";
+import Footer from "./Footer";
+import { GlobalStyle } from "../../styles/theme/global";
+import { ThemeProvider } from "../../providers/ThemeProvider";
+import { BaseContainer, MainContainer } from "../../styles/layout/layout";
 
-export const ThemeProvider: React.FC<{children: ReactNode}> = ({children}) => {
-    const [isDark, setIsDark] = useState(false);
-    const toggleTheme = () => setIsDark((prev) => !prev);
+function Layout() {
+  return (
+    <ThemeProvider>
+      
+      <GlobalStyle />
+      <BaseContainer>
+      <Header />
+      <MainContainer>
+        <Outlet />
+      </MainContainer>
+      <Footer />
+      </BaseContainer>
+    </ThemeProvider>
+  );
+}
 
-    return (
-        <ThemeContext.Provider value={{isDark, toggleTheme}}>
-            <StyledProvider theme={isDark ? darkTheme : lightTheme}>
-                {children}
-            </StyledProvider>
-        </ThemeContext.Provider>
-    )
-};
+export default Layout;

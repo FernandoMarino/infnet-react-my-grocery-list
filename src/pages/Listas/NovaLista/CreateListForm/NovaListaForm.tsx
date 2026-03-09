@@ -1,10 +1,10 @@
 import { BiStore } from "react-icons/bi";
 import { TfiWrite } from "react-icons/tfi";
 import { Button, FormFeedback, FormGroup, Input, InputGroupText, Label } from "reactstrap";
-import type { NovaListaFormData, NovaListaFormErros } from "../../../types/NovaListaFormData";
-import type { Loja } from "../../../types/Loja";
+import type { NovaListaFormData, NovaListaFormErros } from "../../../../types/NovaListaFormData";
+import type { Loja } from "../../../../types/Loja";
 import type { ChangeEvent } from "react";
-import { NovaListaFormContainer, NovaListaFormTextInput, NovaListaInputGroup } from "../../../styles/pages/Home/CreateListForm/CreateListForm";
+import { NovaListaFormContainer, NovaListaFormTextInput, NovaListaInputGroup } from "../../../../styles/pages/Listas/CreateListForm";
 
 interface NovaListaFormProps {
     formData: NovaListaFormData

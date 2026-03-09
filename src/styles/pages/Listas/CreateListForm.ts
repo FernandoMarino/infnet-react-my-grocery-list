@@ -14,6 +14,8 @@ export const NovaListaInputGroup = styled(InputGroup)`
     margin-bottom: 2vh;
     width: 100%;
     background-color: aliceblue;
+
+    
 `
 
 export const NovaListaFormContainer = styled(Form)`

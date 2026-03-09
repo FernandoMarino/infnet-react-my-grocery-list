@@ -1,7 +1,7 @@
 import { useNavigate } from "react-router";
 import { useLojas } from "../../../hooks/useLojas";
 import { type NovaListaFormErros, type NovaListaFormData } from "../../../types/NovaListaFormData";
-import NovaListaForm from "./NovaListaForm";
+import NovaListaForm from "./CreateListForm/NovaListaForm";
 import { useCallback, useState, type ChangeEvent } from "react";
 import { validateNovaListaForm } from "../../../utils/validateNovaListaForm";
 import { useLista } from "../../../hooks/useLista";

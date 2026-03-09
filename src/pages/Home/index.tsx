@@ -28,9 +28,6 @@ export default function Home() {
         <Button tag={Link} to={"/listas"}>
           Minhas Listas
         </Button>
-        <Button tag={Link} to={"/listas"}>
-          Listas
-        </Button>
       </HomeNavButtonGroup>
     </HomeContainer>
   );
