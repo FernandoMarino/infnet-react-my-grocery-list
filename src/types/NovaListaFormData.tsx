@@ -3,7 +3,4 @@ export interface NovaListaFormData {
     nomeLoja?: string;
 }
 
-export type NovaListaFormErros = {
-    [key in keyof Partial<NovaListaFormData>]: string
-    
-}
+export type NovaListaFormErros = Partial<Record<keyof NovaListaFormData, string>>;    

@@ -1,29 +1,37 @@
-
 import { Button } from "reactstrap";
-import { HomeContainer, HomeNavButtonGroup, StyledSearchBar } from "../../styles/pages/Home/home";
-import { useState } from "react";
-import { FormContainer } from "../../styles/pages/Home/CreateListForm/CreateListForm";
-import NovaLista from "./components/NovaList";
+import { Link } from "react-router";
+import { HomeContainer, HomeTitle, HomeNavButtonGroup, HomeSection } from "../../styles/pages/Home/home";
 
-export default function Home(){  
-
-    const [showForm, setShowForm] = useState<boolean>(false)
-    
-
-    return (
+export default function Home() {
+  return (
     <HomeContainer>
-        <HomeNavButtonGroup>
-            <Button onClick={() => setShowForm((prev) => !prev)}>Nova Lista</Button>
-            <Button>Deletar</Button>
-        </HomeNavButtonGroup>
-        <StyledSearchBar type="search" placeholder="🔍 Digite sua busca" />
+      <HomeTitle>Bem‑vindo ao MyGroceryApp!</HomeTitle>
 
-        {showForm && 
-            <FormContainer>
-                <NovaLista setShowForm={() => setShowForm(false)} />
-            </FormContainer>
-        }
+      <HomeSection>
+        Organize suas listas de compras de forma simples, rápida e prática. Aqui você pode criar
+        novas listas, escolher a loja onde vai comprar e manter tudo sempre atualizado.
+      </HomeSection>
 
+      <HomeSection>
+        <h3>
+        Como usar            
+        </h3>
+        <ul>
+          <li>Acesse Listas para visualizar todas as listas já criadas</li>
+          <li>Clique em Nova Lista para começar uma nova</li>
+          <li>Edite, consulte detalhes e mantenha suas compras sempre organizadas</li>
+        </ul>
+        Seu dia a dia fica mais leve quando suas listas trabalham por você
+      </HomeSection>
+
+      <HomeNavButtonGroup>
+        <Button tag={Link} to={"/listas"}>
+          Minhas Listas
+        </Button>
+        <Button tag={Link} to={"/listas"}>
+          Listas
+        </Button>
+      </HomeNavButtonGroup>
     </HomeContainer>
-    );
+  );
 }

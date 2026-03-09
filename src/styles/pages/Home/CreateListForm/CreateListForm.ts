@@ -1,4 +1,4 @@
-import { Form, InputGroup } from "reactstrap";
+import { Form, Input, InputGroup } from "reactstrap";
 import styled from "styled-components";
 
 
@@ -12,6 +12,8 @@ export const FormContainer = styled.div`
 
 export const NovaListaInputGroup = styled(InputGroup)`
     margin-bottom: 2vh;
+    width: 100%;
+    background-color: aliceblue;
 `
 
 export const NovaListaFormContainer = styled(Form)`
@@ -21,4 +23,12 @@ export const NovaListaFormContainer = styled(Form)`
     align-items: center;
     width: 60vw;
     margin: 0 auto;
+    background-color: aqua;
 `
+
+export const NovaListaFormTextInput = styled(Input)`
+    width: 100% ;
+`
+
+
+
