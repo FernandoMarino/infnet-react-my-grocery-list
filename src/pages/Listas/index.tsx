@@ -25,7 +25,6 @@ export default function Listas() {
         <Button tag={Link} to={"/listas/nova"}>
           Nova Lista
         </Button>
-        <Button>Deletar</Button>
       </ListasButtonGroup>
       {listas && (
         <ListasAccordion open={open} toggle={toggle}>
