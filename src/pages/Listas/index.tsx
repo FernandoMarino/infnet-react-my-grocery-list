@@ -1,50 +1,50 @@
-
-import { Accordion, AccordionHeader, AccordionItem, Button } from "reactstrap";
+import { AccordionBody, AccordionHeader, AccordionItem, Button } from "reactstrap";
 import { Link } from "react-router";
-import { ListasButtonGroup, ListasContainer } from "../../styles/pages/Listas/listas";
+import {
+  ListasAccordion,
+  ListasButtonGroup,
+  ListasContainer,
+} from "../../styles/pages/Listas/listas";
 import { useState } from "react";
+import { useListas } from "../../hooks/useListas";
+import NovoItemForm from "./NovoItemForm";
+import type { ListaWithId } from "../../types/Lista";
+import ItemList from "./ItemList";
 
-const listas = [
-    {
-        id: "lista-001",
-        name: "Lista da Semana",
-        items: ["arroz","feijao", 'leite', 'ovos', 'nescau']
-    },
-    {
-        id: "lista-002",
-        name: "Lista da Semana",
-        items: ["massa","agua", 'chocolate']
-    },
-]
+export default function Listas() {
+  const [open, setOpen] = useState<string>("");
+  const { listas, addItem, deleteItem } = useListas();
 
-export default function Listas(){  
+  const toggle = (id: string) => {
+    setOpen(open === id ? "" : id);
+  };
 
-    const [open, setOpen] = useState('1');
-    const toggle = (id: string) => {
-        if(open !== id) {
-            setOpen(id);
-        }
-    }    
-
-    return (
+  return (
     <ListasContainer>
-        <ListasButtonGroup>
-            <Button tag={Link} to={"/listas/nova"}>Nova Lista</Button>
-            <Button>Deletar</Button>
-        </ListasButtonGroup>
+      <ListasButtonGroup>
+        <Button tag={Link} to={"/listas/nova"}>
+          Nova Lista
+        </Button>
+        <Button>Deletar</Button>
+      </ListasButtonGroup>
+      {listas && (
+        <ListasAccordion open={open} toggle={toggle}>
+          {listas.map((lista: ListaWithId) => {
+            if (lista.items) {
+              return (
+                <AccordionItem key={lista.id}>
+                  <AccordionHeader targetId={lista.id}>{lista.name}</AccordionHeader>
 
-
-        <Accordion open={open} toggle={toggle}>
-            {listas.map((lista, i) => {
-                return (
-            <AccordionItem>
-                <AccordionHeader targetId={i}>{lista.name}</AccordionHeader>
-            </AccordionItem>)
-            
-        })}
-        </Accordion>
-
-
+                  <AccordionBody accordionId={lista.id}>
+                    <NovoItemForm listaId={lista.id} onAdd={addItem} />
+                    <ItemList listaId={lista.id} items={lista.items} onDelete={deleteItem} />
+                  </AccordionBody>
+                </AccordionItem>
+              );
+            }
+          })}
+        </ListasAccordion>
+      )}
     </ListasContainer>
-    );
+  );
 }

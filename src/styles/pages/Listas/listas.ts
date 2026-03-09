@@ -1,3 +1,4 @@
+import { Accordion } from "reactstrap";
 import styled from "styled-components";
 
 export const ListasContainer = styled.div`
@@ -31,4 +32,28 @@ export const ListasButtonGroup = styled.nav`
         }
     }
 
+`
+
+
+export const NovoItemDiv = styled.div`
+    margin-top: "1rem";
+    display: flex;
+    gap: 1vw;
+
+    .btn {
+        background-color: ${({theme})=> theme.secondary};
+        color: ${({theme})=> theme.primary};
+    }
+`
+
+export const NovoItemInput = styled.input`
+    margin-top: "1rem";
+    height: 2.5rem;
+`
+
+export const ListasAccordion = styled(Accordion)`
+    display: flex;
+    flex-direction: column;
+    gap: 0.5vh;
+    margin-top: 3vh;
 `

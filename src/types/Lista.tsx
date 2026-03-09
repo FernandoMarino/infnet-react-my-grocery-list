@@ -3,7 +3,10 @@ import type { Loja } from "./Loja"
 
 export interface Lista {
     name: string,
-    items?: Item[]
-    loja?: Loja 
+    loja?: Loja | undefined
+    items: Item[]
 }
 
+export interface ListaWithId extends Lista {
+    id: string;
+}
