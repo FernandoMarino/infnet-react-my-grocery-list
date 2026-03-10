@@ -1,6 +1,5 @@
 import { useState } from "react";
-import { NovoItemDiv, NovoItemInput } from "../../../styles/pages/Listas/listas";
-import { Button } from "reactstrap";
+import { NovoItemButton, NovoItemDiv, NovoItemInput } from "../../../styles/pages/Listas/listas";
 import type { NovoItemFormProps } from "../../../types/NovoItemFormProps";
 
 export default function NovoItemForm({ listaId, onAdd }: NovoItemFormProps) {
@@ -23,11 +22,11 @@ export default function NovoItemForm({ listaId, onAdd }: NovoItemFormProps) {
         onChange={(e) => setQtd(e.target.value)}
       />
 
-      <Button onClick={() => {
+      <NovoItemButton onClick={() => {
             onAdd(listaId, nome, Number(qtd))
             }}>
         Adicionar
-      </Button>
+      </NovoItemButton>
     </NovoItemDiv>
   );
 }

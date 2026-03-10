@@ -1,4 +1,4 @@
-import { Accordion } from "reactstrap";
+import { Accordion, Button } from "reactstrap";
 import styled from "styled-components";
 
 export const ListasContainer = styled.div`
@@ -50,6 +50,11 @@ export const NovoItemInput = styled.input`
     margin-top: "1rem";
     height: 2.5rem;
 `
+
+export const NovoItemButton = styled(Button)`
+    margin-left: 16px;
+`
+
 
 export const ListasAccordion = styled(Accordion)`
     display: flex;

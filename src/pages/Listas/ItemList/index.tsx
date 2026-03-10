@@ -17,6 +17,8 @@ export default function ItemList({ listaId, items, onDelete }: ItemListProps) {
           <ItemListButton
             color="danger"
             size="sm"
+            tag="button"
+            
             onClick={() => onDelete(listaId, item.id)}
             
           >
