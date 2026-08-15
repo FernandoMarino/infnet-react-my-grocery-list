@@ -1,11 +1,18 @@
 import { Request, Response } from "express";
 import { IController } from "./IController.js";
+import { CreateUserDTO } from "../dtos/CreateUserDTO.js";
+import { CreateUserService } from "../services/CreateUserService.js";
 
-class CreateUserController implements IController {
-    handle(req: Request, res: Response): Promise<Response> {
+export class CreateUserController implements IController {
+    constructor(private readonly createUserService: CreateUserService) {}
 
-        
+    handle = async (req: Request, res: Response): Promise<Response> => {
+        const createUserPayload: CreateUserDTO = req.body;
+        const user = await this.createUserService.execute(createUserPayload);
 
-        const { name, email, password, googleUuid } = req.body;
+        return res.status(201).json({
+            message: "User Created Successfully",
+            user,
+        });
     }
 }
