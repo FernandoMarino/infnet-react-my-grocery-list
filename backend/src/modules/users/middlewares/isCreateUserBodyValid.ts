@@ -1,7 +1,11 @@
-import {z} from "zod"
+import CreateUserSchema from "../schemas/CreateUserSchema.js";
+import { NextFunction, Request, Response } from "express";
 
-function isCreateUserBodyValid(req: Request, res: Response) {
-
-    z.parse<>
-
+export async function isCreateUserBodyValid(
+    req: Request,
+    res: Response,
+    next: NextFunction,
+) {
+    await CreateUserSchema.parseAsync(req.body);
+    next();
 }

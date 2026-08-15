@@ -1,6 +1,6 @@
 import { z } from "zod";
 
-const createUserSchema = z
+const CreateUserSchema = z
     .object({
         name: z.string().min(2, "Name must have at least 2 letters"),
         email: z.email("Invalid email format"),
@@ -20,4 +20,4 @@ const createUserSchema = z
         },
     );
 
-    export default createUserSchema;
+    export default CreateUserSchema;
