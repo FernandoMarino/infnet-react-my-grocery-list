@@ -11,7 +11,7 @@ export class InMemoryUserRepository extends IUserRepository {
     async createUser(data: SaveUserDTO): Promise<User> {
         const creationTimestamp = new Date();
         const newUser: User = {
-            id: crypto.randomUUIDv7(),
+            id: crypto.randomUUID(),
             name: data.name,
             email: data.email,
             passwordHash: data.passwordHash ?? null,
