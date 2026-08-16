@@ -32,4 +32,5 @@ router.post(
     authenticateUserController.handle,
 );
 
+
 export default router;
