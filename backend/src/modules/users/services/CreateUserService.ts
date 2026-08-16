@@ -33,7 +33,7 @@ export class CreateUserService {
             googleUuid: user.googleUuid ?? null,
         };
 
-        const newUser: User = await this.userRepository.createUser(userPayload);
+        const newUser: User = await this.userRepository.saveUser(userPayload);
 
         if (!newUser) {
             throw new AppError("User creation failed", 500);

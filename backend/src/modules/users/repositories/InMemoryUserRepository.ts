@@ -8,7 +8,7 @@ import crypto from "crypto";
 export class InMemoryUserRepository extends IUserRepository {
     private users: User[] = [];
 
-    async createUser(data: SaveUserDTO): Promise<User> {
+    async saveUser(data: SaveUserDTO): Promise<User> {
         const creationTimestamp = new Date();
         const newUser: User = {
             id: crypto.randomUUID(),
