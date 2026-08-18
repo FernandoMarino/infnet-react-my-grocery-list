@@ -1,6 +1,7 @@
 import { NextFunction, Request, Response } from "express";
 import { AppError } from "../errors/AppError.js";
-import jwt, { JsonWebTokenError, JwtPayload } from "jsonwebtoken";
+import jwt from "jsonwebtoken";
+import type { JwtPayload } from "jsonwebtoken";
 import { authConfig } from "../config/authConfig.js";
 
 export async function ensureAuthenticated(
@@ -40,7 +41,7 @@ export async function ensureAuthenticated(
     } catch (error) {
         console.error(error);
 
-        if (error instanceof JsonWebTokenError) {
+        if (error instanceof jwt.JsonWebTokenError) {
             throw new AppError("Invalid or Expired Token", 401);
         } else {
             throw new AppError("Internal Server Error", 500);

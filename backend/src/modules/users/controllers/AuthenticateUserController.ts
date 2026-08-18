@@ -1,5 +1,5 @@
 import { Request, Response } from "express";
-import { IController } from "./IController.js";
+import { IController } from "../../../shared/interfaces/IController.js";
 import { AuthenticateUserService } from "../services/AuthenticateUserService.js";
 import { AuthenticateUserDTO } from "../dtos/AuthenticateUserDTO.js";
 
