@@ -1,5 +1,3 @@
-import { AppError } from "../../../shared/errors/AppError.js";
-import { CreateUserDTO } from "../dtos/CreateUserDTO.js";
 import { SaveUserDTO } from "../dtos/SaveUserDTO.js";
 import { User } from "../entities/User.js";
 import { IUserRepository } from "./IUserRepository.js";
@@ -8,14 +6,14 @@ import crypto from "crypto";
 export class InMemoryUserRepository extends IUserRepository {
     private users: User[] = [];
 
-    async saveUser(data: SaveUserDTO): Promise<User> {
+    async saveUser(payload: SaveUserDTO): Promise<User> {
         const creationTimestamp = new Date();
         const newUser: User = {
             id: crypto.randomUUID(),
-            name: data.name,
-            email: data.email,
-            passwordHash: data.passwordHash ?? null,
-            googleUuid: data.googleUuid ?? null,
+            name: payload.name,
+            email: payload.email,
+            passwordHash: payload.passwordHash ?? null,
+            googleUuid: payload.googleUuid ?? null,
             createdAt: creationTimestamp,
             updatedAt: creationTimestamp,
         };

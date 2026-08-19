@@ -14,7 +14,7 @@ export class CreateUserService {
         this.hashProvider = hashProvider;
     }
 
-    async execute(user: CreateUserDTO) {
+    async execute(user: CreateUserDTO): Promise<Omit<User, 'passwordHash'>> {
         const userExists = await this.userRepository.findByEmail(user.email);
         if (userExists) {
             throw new AppError("Email is already in use", 409);
