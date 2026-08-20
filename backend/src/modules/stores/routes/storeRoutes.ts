@@ -1,23 +1,22 @@
 import { Router } from "express";
-import { CreateStoreService } from "../services/CreateStoreService.js";
-import { InMemoryStoreRepository } from "../repositories/InMemoryStoreRepository.js";
-import { InMemoryUserStoreRepository } from "../repositories/InMemoryUserStoreRepository.js";
-import { CreateStoreController } from "../controllers/CreateStoreController.js";
-import { ensureAuthenticated } from "../../../shared/middlewares/ensureAuthenticated.js";
-import { validateBody } from "../../../shared/middlewares/validateBody.js";
-import CreateStoreSchema from "../schemas/CreateStoreSchema.js";
+import { InMemoryStoreRepository } from "../repositories/InMemoryStoreRepository";
+import { InMemoryUserStoreRepository } from "../repositories/InMemoryUserStoreRepository";
+import { CreateStoreController } from "../controllers/CreateStoreController";
+import { ensureAuthenticated } from "../../../shared/middlewares/ensureAuthenticated";
+import { validateBody } from "../../../shared/middlewares/validateBody";
+import CreateStoreSchema from "../schemas/CreateStoreSchema";
+import { StoreService } from "../services/StoreService";
+import { FindStoresByUserController } from "../controllers/FindStoresByUserController";
 
 const router = Router();
 
 const storeRepository = new InMemoryStoreRepository();
 const userStoreRepository = new InMemoryUserStoreRepository();
 
-const createStoreService = new CreateStoreService(
-    storeRepository,
-    userStoreRepository,
-);
+const storeService = new StoreService(storeRepository, userStoreRepository);
 
-const createStoreController = new CreateStoreController(createStoreService);
+const createStoreController = new CreateStoreController(storeService);
+const findStoresByUserController = new FindStoresByUserController(storeService);
 
 router.post(
     "/",
@@ -25,5 +24,6 @@ router.post(
     validateBody(CreateStoreSchema),
     createStoreController.handle,
 );
+router.get("/", ensureAuthenticated, findStoresByUserController.handle);
 
 export default router;

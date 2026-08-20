@@ -29,7 +29,7 @@ export class InMemoryStoreRepository extends IStoreRepository {
         return newStore
     }
 
-    async findByStoreName(name: string): Promise<Store | null> {
+    async findByName(name: string): Promise<Store | null> {
         const store = this.stores.find(store => store.name.toLowerCase() === name.toLowerCase()) ?? null
         return store
     }

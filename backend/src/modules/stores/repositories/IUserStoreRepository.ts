@@ -6,5 +6,6 @@ export abstract class IUserStoreRepository {
     abstract saveUserStore(data: SaveUserStoreDTO): Promise<UserStore>;
     abstract findByUserAndStore(userId: string, storeId: string): Promise<UserStore | null>;
     abstract findByUser(id: string): Promise<UserStore[]>;
+    abstract removeUserStore(userId: string, storeId: string): Promise<boolean>
     
 }
