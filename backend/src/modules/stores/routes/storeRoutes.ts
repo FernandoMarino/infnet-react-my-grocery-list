@@ -1,29 +1,29 @@
 import { Router } from "express";
-import { InMemoryStoreRepository } from "../repositories/InMemoryStoreRepository";
-import { InMemoryUserStoreRepository } from "../repositories/InMemoryUserStoreRepository";
-import { CreateStoreController } from "../controllers/CreateStoreController";
 import { ensureAuthenticated } from "../../../shared/middlewares/ensureAuthenticated";
 import { validateBody } from "../../../shared/middlewares/validateBody";
 import CreateStoreSchema from "../schemas/CreateStoreSchema";
-import { StoreService } from "../services/StoreService";
-import { FindStoresByUserController } from "../controllers/FindStoresByUserController";
+import UpdateStoreSchema from "../schemas/UpdateStoreSchema";
+import { createStoreController, deleteStoreController, findStoresByUserController, updateStoreController } from "../controllers";
 
 const router = Router();
 
-const storeRepository = new InMemoryStoreRepository();
-const userStoreRepository = new InMemoryUserStoreRepository();
 
-const storeService = new StoreService(storeRepository, userStoreRepository);
-
-const createStoreController = new CreateStoreController(storeService);
-const findStoresByUserController = new FindStoresByUserController(storeService);
-
+// Create (POST)
 router.post(
     "/",
     ensureAuthenticated,
     validateBody(CreateStoreSchema),
     createStoreController.handle,
 );
+
+// Listar (GET)
 router.get("/", ensureAuthenticated, findStoresByUserController.handle);
+
+// Update (PUT)
+router.put("/:id", ensureAuthenticated, validateBody(UpdateStoreSchema), updateStoreController.handle )
+
+// Delete (DELETE)
+router.delete("/:id", ensureAuthenticated, deleteStoreController.handle )
+
 
 export default router;

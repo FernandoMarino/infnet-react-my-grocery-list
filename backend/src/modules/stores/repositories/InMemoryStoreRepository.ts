@@ -4,12 +4,10 @@ import { Store } from "../entities/Store.js";
 import { IStoreRepository } from "./IStoreRepository.js";
 
 export class InMemoryStoreRepository extends IStoreRepository {
-    
-    private stores: Store[] = []
+    private stores: Store[] = [];
 
     async saveStore(data: SaveStoreDTO): Promise<Store> {
-        
-        const creationDate = new Date()
+        const creationDate = new Date();
 
         const newStore: Store = {
             id: crypto.randomUUID(),
@@ -21,26 +19,47 @@ export class InMemoryStoreRepository extends IStoreRepository {
             postalCode: data.postalCode ?? null,
             country: data.country ?? null,
             createdAt: creationDate,
-            updatedAt: creationDate
-        }
+            updatedAt: creationDate,
+        };
 
-        this.stores.push(newStore)
+        this.stores.push(newStore);
 
-        return newStore
+        return newStore;
     }
 
     async findByName(name: string): Promise<Store | null> {
-        const store = this.stores.find(store => store.name.toLowerCase() === name.toLowerCase()) ?? null
-        return store
+        const store =
+            this.stores.find(
+                (store) => store.name.toLowerCase() === name.toLowerCase(),
+            ) ?? null;
+        return store;
     }
 
     async findById(id: string): Promise<Store | null> {
-        const store = this.stores.find(store => store.id === id) ?? null
-        return store
+        const store = this.stores.find((store) => store.id === id) ?? null;
+        return store;
     }
 
     async findByGooglePlaceId(googlePlaceId: string): Promise<Store | null> {
-        const store = this.stores.find(store => store.googlePlaceId === googlePlaceId) ?? null
-        return store    
+        const store =
+            this.stores.find(
+                (store) => store.googlePlaceId === googlePlaceId,
+            ) ?? null;
+        return store;
+    }
+
+    async updateStore(storeId: string, payload: SaveStoreDTO): Promise<Store> {
+        const store = (await this.findById(storeId)) as Store;
+
+        store.name = payload.name;
+        store.googlePlaceId = payload.googlePlaceId ?? null;
+        store.address = payload.address ?? null;
+        store.city = payload.city ?? null;
+        store.province = payload.province ?? null;
+        store.postalCode = payload.postalCode ?? null;
+        store.country = payload.country ?? null;
+        store.updatedAt = new Date()
+
+        return store;
     }
 }

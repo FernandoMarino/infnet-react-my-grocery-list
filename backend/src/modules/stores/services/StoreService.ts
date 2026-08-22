@@ -1,7 +1,9 @@
 import { AppError } from "../../../shared/errors/AppError";
 import { CreateStoreDTO } from "../dtos/CreateStoreDTO";
+import { DeleteStoreDTO } from "../dtos/DeleteStoreDTO";
 import { SaveStoreDTO } from "../dtos/SaveStoreDTO";
 import { SaveUserStoreDTO } from "../dtos/SaveUserStoreDTO";
+import { UpdateStoreDTO } from "../dtos/UpdateStoreDTO";
 import { Store } from "../entities/Store";
 import { IStoreRepository } from "../repositories/IStoreRepository";
 import { IUserStoreRepository } from "../repositories/IUserStoreRepository";
@@ -13,9 +15,7 @@ export class StoreService {
     ) {}
 
     async createStore(data: CreateStoreDTO, userId: string): Promise<Store> {
-        const storeExists = await this.storeRepository.findByName(
-            data.name,
-        );
+        const storeExists = await this.storeRepository.findByName(data.name);
 
         if (!storeExists) {
             const createStorePayload: SaveStoreDTO = {
@@ -87,5 +87,44 @@ export class StoreService {
         const stores = (await Promise.all(promises)) as Store[];
 
         return stores;
+    }
+
+    async deleteStoreService(payload: DeleteStoreDTO): Promise<boolean> {
+        const storeExists = await this.userStoreRepository.findByUserAndStore(
+            payload.userId,
+            payload.storeId,
+        );
+
+        if (!storeExists) throw new AppError("Store not found", 404);
+
+        const deleted = await this.userStoreRepository.removeUserStore(
+            payload.userId,
+            payload.storeId,
+        );
+
+        if (!deleted) throw new AppError("Store delete failed.", 500);
+
+        return deleted;
+    }
+
+    async updateStore(payload: UpdateStoreDTO): Promise<Store> {
+        const userStoreExists =
+            await this.userStoreRepository.findByUserAndStore(
+                payload.userId,
+                payload.storeId,
+            );
+
+        if (!userStoreExists) throw new AppError("Store not found", 404);
+
+        const { userId, storeId, ...updatePayload } = payload;
+
+        const store = await this.storeRepository.updateStore(
+            storeId,
+            updatePayload as SaveStoreDTO,
+        );
+
+        if(!store) throw new AppError("Store update failed.", 500);
+
+        return store
     }
 }
