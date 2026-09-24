@@ -1,5 +1,5 @@
 import { SaveItemDTO } from "../dtos/SaveItemDTO";
-import { Item } from "../entities/Item";
+import { Item } from "../interfaces/IItem";
 
 export abstract class IItemRepository {
     abstract saveItem(payload: SaveItemDTO): Promise<Item>

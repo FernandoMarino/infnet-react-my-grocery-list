@@ -5,7 +5,7 @@ import { AuthenticateUserDTO } from "../dtos/AuthenticateUserDTO.js";
 import { IHashProvider } from "../providers/IHashProvider.js";
 import { IUserRepository } from "../repositories/IUserRepository.js";
 import { authConfig } from "../../../shared/config/authConfig.js";
-import { User } from "../entities/User.js";
+import { IUser } from "../interfaces/IUser.js";
 
 export class AuthenticateUserService {
     private readonly userRepository: IUserRepository;
@@ -18,13 +18,13 @@ export class AuthenticateUserService {
 
     async execute(
         payload: AuthenticateUserDTO
-    ): Promise<{ user: Omit<User, "passwordHash">; token: string }> {
+    ): Promise<{ user: Omit<IUser, "passwordHash">; token: string }> {
         const { email, password } = payload;
         if (!password) {
             throw new AppError("Invalid Credentials", 400);
         }
 
-        const user = await this.userRepository.findByEmail(email);
+        const user = await this.userRepository.getByEmail(email);
         if (!user) {
             throw new AppError("Invalid Credentials", 401);
         }

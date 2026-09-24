@@ -1,6 +1,6 @@
 import { randomUUID } from "crypto";
 import { SaveCategoryDTO } from "../dtos/SaveCategoryDTO";
-import { Category } from "../entities/Category";
+import { Category } from "../interfaces/ICategory";
 import { ICategoryRepository } from "./ICategoryRepository";
 
 export class InMemoryCategoryRepository extends ICategoryRepository {

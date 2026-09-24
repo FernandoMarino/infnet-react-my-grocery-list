@@ -1,14 +1,14 @@
-import { SaveUserDTO } from "../dtos/SaveUserDTO.js";
-import { User } from "../entities/User.js";
+import { ISaveUserDTO } from "../dtos/ISaveUserDTO.js";
+import { IUser } from "../interfaces/IUser.js";
 import { IUserRepository } from "./IUserRepository.js";
 import crypto from "crypto";
 
 export class InMemoryUserRepository extends IUserRepository {
-    private users: User[] = [];
+    private users: IUser[] = [];
 
-    async saveUser(payload: SaveUserDTO): Promise<User> {
+    async saveUser(payload: ISaveUserDTO): Promise<IUser> {
         const creationTimestamp = new Date();
-        const newUser: User = {
+        const newUser: IUser = {
             id: crypto.randomUUID(),
             name: payload.name,
             email: payload.email,
@@ -22,7 +22,7 @@ export class InMemoryUserRepository extends IUserRepository {
         return newUser;
     }
 
-    async findByEmail(email: string): Promise<User | null> {
+    async getByEmail(email: string): Promise<IUser | null> {
         
         const user = this.users.find(user => user.email.toLowerCase() === email.toLowerCase())
 
@@ -33,7 +33,7 @@ export class InMemoryUserRepository extends IUserRepository {
         return user;
     }
 
-    async findById(id: string): Promise<User | null> {
+    async getById(id: string): Promise<IUser | null> {
         const user = this.users.find(user => user.id === id)
 
         if (!user) {

@@ -4,7 +4,7 @@
   "description": "",
   "main": "index.js",
   "scripts": {
-    "dev": "tsx watch src/server.ts",
+    "dev": "tsx watch src/shared/index.ts",
     "test": "jest"
   },
   "keywords": [],
@@ -17,6 +17,7 @@
     "dotenv": "^17.4.2",
     "express": "^5.2.1",
     "jsonwebtoken": "^9.0.3",
+    "mongoose": "^9.10.2",
     "morgan": "^1.11.0",
     "zod": "^4.4.3"
   },

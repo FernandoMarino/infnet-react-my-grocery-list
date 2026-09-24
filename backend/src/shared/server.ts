@@ -3,9 +3,10 @@ import type { Request, Response, NextFunction } from "express";
 import cors from "cors";
 import morgan from "morgan";
 
-import appRouter from "./shared/http/routes.js";
-import { AppError } from "./shared/errors/AppError.js";
+import appRouter from "./http/routes.js";
+import { AppError } from "./errors/AppError.js";
 import z, { ZodError } from "zod";
+import { connectDB } from "./config/mongo_database.js";
 
 const PORT: number = 3000;
 
@@ -35,6 +36,4 @@ app.use((error: Error, req: Request, res: Response, next: NextFunction) => {
     }
 });
 
-app.listen(PORT, () => {
-    console.log(`Dev server running at port ${PORT}`);
-});
+export default app

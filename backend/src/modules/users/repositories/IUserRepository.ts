@@ -1,9 +1,8 @@
-
-import { SaveUserDTO } from "../dtos/SaveUserDTO.js";
-import { User } from "../entities/User.js";
-
+import { ISaveUserDTO } from "../dtos/ISaveUserDTO.js";
+import { IUserResponseDTO } from "../dtos/IUserResponseDTO.js";
 export abstract class IUserRepository {
-    abstract saveUser(data: SaveUserDTO): Promise<User>;
-    abstract findByEmail(email: string): Promise<User | null>;
-    abstract findById(id: string): Promise<User | null>;
+    abstract saveUser(data: ISaveUserDTO): Promise<IUserResponseDTO>;
+    abstract getByEmail(email: string): Promise<IUserResponseDTO | null>;
+    abstract getById(id: string): Promise<IUserResponseDTO | null>;
+    abstract getAll(): Promise<IUserResponseDTO[]>;
 }

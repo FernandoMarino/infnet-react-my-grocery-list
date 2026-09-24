@@ -1,5 +1,5 @@
 import { SaveCategoryDTO } from "../dtos/SaveCategoryDTO";
-import { Category } from "../entities/Category";
+import { Category } from "../interfaces/ICategory";
 
 export abstract class ICategoryRepository {
     abstract saveCategory(data: SaveCategoryDTO): Promise<Category>;
