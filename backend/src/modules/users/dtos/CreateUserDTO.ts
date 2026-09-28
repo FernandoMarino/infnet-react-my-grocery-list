@@ -1,6 +1,6 @@
-export interface CreateUserDTO {
+export interface ICreateUserDTO {
     name: string;
     email: string;
-    password?: string;
-    googleUuid?: string
+    password: string;
+    role: string;
 }

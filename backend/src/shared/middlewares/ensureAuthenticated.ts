@@ -4,6 +4,8 @@ import jwt from "jsonwebtoken";
 import type { JwtPayload } from "jsonwebtoken";
 import { authConfig } from "../config/authConfig.js";
 
+
+
 export async function ensureAuthenticated(
     req: Request,
     res: Response,

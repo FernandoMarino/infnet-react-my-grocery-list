@@ -1,7 +1,7 @@
 import { AppError } from "../../../shared/errors/AppError.js";
-import { CreateUserDTO } from "../dtos/CreateUserDTO.js";
+import { ICreateUserDTO } from "../dtos/CreateUserDTO.js";
 import { ISaveUserDTO } from "../dtos/ISaveUserDTO.js";
-import { IUser } from "../interfaces/IUser.js";
+import { IUserResponseDTO } from "../dtos/IUserResponseDTO.js";
 import { IHashProvider } from "../providers/IHashProvider.js";
 import { IUserRepository } from "../repositories/IUserRepository.js";
 
@@ -14,33 +14,27 @@ export class CreateUserService {
         this.hashProvider = hashProvider;
     }
 
-    async execute(user: CreateUserDTO): Promise<Omit<IUser, 'passwordHash'>> {
+    async execute(user: ICreateUserDTO): Promise<IUserResponseDTO> {
         const userExists = await this.userRepository.getByEmail(user.email);
+        // console.log(`user: ${userExists}`);
+        
         if (userExists) {
             throw new AppError("Email is already in use", 409);
-        }
-
-        if (!user.googleUuid && !user.password) {
-            throw new AppError("Missing Google ID or Password", 400);
         }
 
         const userPayload: ISaveUserDTO = {
             name: user.name,
             email: user.email,
-            passwordHash: user.password
-                ? await this.hashProvider.generateHash(user.password)
-                : null,
-            googleUuid: user.googleUuid ?? null,
+            passwordHash: await this.hashProvider.generateHash(user.password),
+            role: user.role,
         };
 
-        const newUser: IUser = await this.userRepository.saveUser(userPayload);
+        const newUser = await this.userRepository.saveUser(userPayload);
 
         if (!newUser) {
             throw new AppError("User creation failed", 500);
         }
 
-        const { passwordHash, ...userWithoutPassword } = newUser;
-
-        return userWithoutPassword;
+        return newUser;
     }
 }

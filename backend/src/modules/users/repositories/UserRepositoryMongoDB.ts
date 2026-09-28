@@ -2,6 +2,7 @@ import { ISaveUserDTO } from "../dtos/ISaveUserDTO.js";
 import { UserModel } from "../models/userModel.js";
 import { IUserRepository } from "./IUserRepository.js";
 import { IUserResponseDTO } from "../dtos/IUserResponseDTO.js";
+import { IUser } from "../interfaces/IUser.js";
 
 export class UserRepositoryMongoDB extends IUserRepository {
     async saveUser(user: ISaveUserDTO): Promise<IUserResponseDTO> {
@@ -17,24 +18,18 @@ export class UserRepositoryMongoDB extends IUserRepository {
         } as IUserResponseDTO;
     }
 
-    async getByEmail(email: string): Promise<IUserResponseDTO | null> {
-        throw new Error("Method not implemented.");
+    async getByEmail(email: string): Promise<IUser | null> {
+        const user = await UserModel.findOne({ email });
+        return user;
     }
     async getById(id: string): Promise<IUserResponseDTO | null> {
-        throw new Error("Method not implemented.");
+        const user = await UserModel.findOne({ id }, { passwordHash: 0 });
+        return user;
     }
 
     async getAll(): Promise<IUserResponseDTO[]> {
-        const users = await UserModel.find();
+        const users = await UserModel.find({}, { passwordHash: 0 });
 
-        return users.map((user) => {
-            const userObj = user.toObject();
-            const { passwordHash, _id, __v, ...userResponse } = userObj;
-
-            return {
-                id: _id.toString(),
-                ...userResponse,
-            } as IUserResponseDTO;
-        });
+        return users;
     }
 }
