@@ -30,7 +30,7 @@ O sistema é estruturado em camadas desacopladas com responsabilidades bem defin
 
 ---
 
-## 2. Modelagem do Banco NoSQL em Documentos
+## 2. Modelagem do Banco NoSQL (MongoDB) em Documentos
 
 O banco de dados foi modelado para aproveitar as vantagens do paradigma orientado a documentos do MongoDB:
 
